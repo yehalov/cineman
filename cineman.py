@@ -2,7 +2,6 @@ import random
 import re
 import os
 
-clean_blocks=[]
 correct = 0
 qcount = 0
 print('Input \'0\' to stop test, \'1\' to see the name of the movie\n')
@@ -11,6 +10,7 @@ for i in os.walk('subs'):
     movie_list = (i[2])
     
 while True: #цикл повторения вопросов
+    clean_blocks = []
     movie = movie_list[random.randint(0,len(movie_list)-1)]
     with open (u'subs\\'+movie, 'r', encoding='utf-8') as sub: #открываем файл
         blocks = sub.read().split("\n\n") #разбиваем на блоки фраз по пустой строке
@@ -50,3 +50,4 @@ while True: #цикл повторения вопросов
     qcount =+ 1
         
 print('You have '+str(int(correct*100/qcount))+'%'+' of correct answers')
+print(len(clean_blocks))
